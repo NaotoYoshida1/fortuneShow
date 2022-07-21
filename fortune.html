@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://wwww.thymleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>占い</title>
+</head>
+<body>
+	<h1>占いたい月を入力してね</h1>
+	<form action="/fortune" method="get">
+	<p>
+		<select name="month">
+            <option th:each = "i : ${#numbers.sequence(1,12,1)}" th:selected = "${i == slectMonth}" th:value = "${i}" th:text = "${i} + '月'"></option>
+        </select><input type="submit">
+	</p>
+	</form>
+
+	<hr>
+	
+	<div th:if="${item} != null">
+		<span th:text = "${month}"></span>月の運勢は…
+	</div>
+	
+	<div th:if="${item} != null">
+		ラッキーアイテム：<span th:text = "${item}"></span>
+	</div>
+	
+	<div th:if="${item} != null">
+		ラッキーカラー：<span th:text = "${color}"></span>
+	</div>
+	
+	<div th:if="${item} != null">
+		順位：<span th:text = "${rank}"></span>
+	</div>
+</body>
+</html>
